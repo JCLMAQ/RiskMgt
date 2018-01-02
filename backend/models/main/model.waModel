@@ -1,1 +1,415 @@
-{    "toJSON": true,    "dbInfo": [{        "name": "Model",        "uuid": ""    }],    "extraProperties": {        "version": "2",        "classes": {        },        "model": {            "scriptMode": "manual"        }    },    "dataClasses": []}
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"WorkContext": {
+				"panelColor": "rgb(255, 255, 255)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 271,
+						"Y": 19
+					},
+					"pathVisible": false
+				}
+			},
+			"Choice": {
+				"panelColor": "rgb(255, 230, 255)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 32,
+						"Y": 1685
+					},
+					"pathVisible": true
+				}
+			},
+			"WCComponent": {
+				"panelColor": "rgb(255, 255, 255)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 26,
+						"Y": 243
+					},
+					"pathVisible": false
+				}
+			},
+			"WCType": {
+				"panelColor": "rgb(255, 255, 255)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 25,
+						"Y": 23
+					},
+					"pathVisible": false
+				}
+			},
+			"Risk": {
+				"panelColor": "rgb(255, 255, 0)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 524,
+						"Y": 21
+					},
+					"pathVisible": false
+				}
+			},
+			"RiskCategory": {
+				"panelColor": "rgb(255, 255, 0)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 760,
+						"Y": 16
+					},
+					"pathVisible": false
+				}
+			},
+			"WCRisk": {
+				"panelColor": "rgb(255, 255, 0)",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 763,
+						"Y": 249
+					},
+					"pathVisible": false
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 0,
+			"relationCurve": {
+				"run": true,
+				"mode": 1
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"collectionName": "WorkContextCollection",
+			"className": "WorkContext",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "uuid",
+					"primKey": "true",
+					"autosequence": true,
+					"unique": true,
+					"autogenerate": true
+				},
+				{
+					"name": "codeWC",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "nameWC",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "descriptionWC",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "workContextType",
+					"scope": "public",
+					"path": "WCType",
+					"type": "WCType",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "usedIn",
+					"scope": "public",
+					"reversePath": true,
+					"path": "usedBy",
+					"type": "WCComponentCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "composedOf",
+					"scope": "public",
+					"reversePath": true,
+					"path": "partOf",
+					"type": "WCComponentCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "initialDate",
+					"scope": "public",
+					"type": "date",
+					"kind": "storage"
+				},
+				{
+					"name": "closeDate",
+					"scope": "public",
+					"type": "date",
+					"kind": "storage"
+				},
+				{
+					"name": "createBy",
+					"scope": "public",
+					"type": "uuid",
+					"kind": "storage"
+				},
+				{
+					"name": "isAssembly",
+					"scope": "public",
+					"type": "bool",
+					"kind": "storage"
+				},
+				{
+					"name": "depth",
+					"scope": "public",
+					"type": "number",
+					"kind": "storage"
+				},
+				{
+					"name": "isUsed",
+					"scope": "public",
+					"type": "bool",
+					"kind": "storage"
+				},
+				{
+					"name": "quantityWC",
+					"scope": "public",
+					"type": "number",
+					"kind": "storage"
+				},
+				{
+					"name": "relatedRisk",
+					"scope": "public",
+					"reversePath": true,
+					"path": "workContext",
+					"type": "WCRiskCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "risks",
+					"scope": "public",
+					"type": "Risk",
+					"kind": "relatedEntities",
+					"reversePath": false,
+					"path": "relatedRisk.riskLinked"
+				}
+			]
+		},
+		{
+			"collectionName": "WCComponentCollection",
+			"className": "WCComponent",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "uuid",
+					"primKey": "true",
+					"autosequence": true,
+					"unique": true,
+					"autogenerate": true
+				},
+				{
+					"name": "quantity",
+					"scope": "public",
+					"type": "number",
+					"kind": "storage"
+				},
+				{
+					"name": "depthWC",
+					"scope": "public",
+					"type": "number",
+					"kind": "storage"
+				},
+				{
+					"name": "usedBy",
+					"kind": "relatedEntity",
+					"type": "WorkContext",
+					"path": "WorkContext",
+					"scope": "public",
+					"matchColumn": "component"
+				},
+				{
+					"name": "partOf",
+					"kind": "relatedEntity",
+					"type": "WorkContext",
+					"path": "WorkContext",
+					"scope": "public"
+				}
+			],
+			"matchTable": "ComponentWC"
+		},
+		{
+			"collectionName": "ChoiceCollection",
+			"className": "Choice",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "uuid",
+					"autogenerate": true,
+					"not_null": true,
+					"identifying": false,
+					"primKey": "true",
+					"unique": "true"
+				},
+				{
+					"name": "category",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "item",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				}
+			]
+		},
+		{
+			"collectionName": "WCTypeCollection",
+			"className": "WCType",
+			"extends": "Choice",
+			"restrictingQuery": [
+				{
+					"queryStatement": "category ='WorkContextType'"
+				}
+			],
+			"attributes": [
+				{
+					"name": "wcCollection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "workContextType",
+					"type": "WorkContextCollection",
+					"kind": "relatedEntities",
+					"matchColumn": "workContextLinkType, workContextCollection"
+				}
+			],
+			"matchTable": "WorkContextType"
+		},
+		{
+			"collectionName": "RiskCollection",
+			"className": "Risk",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "uuid",
+					"primKey": "true",
+					"autosequence": true,
+					"unique": true,
+					"autogenerate": true
+				},
+				{
+					"name": "codeRisk",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "nameRisk",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "mainRisk",
+					"scope": "public",
+					"path": "Risk",
+					"type": "Risk",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "subRisk",
+					"scope": "public",
+					"reversePath": true,
+					"path": "mainRisk",
+					"type": "RiskCollection",
+					"kind": "relatedEntities",
+					"matchColumn": "riskCollection"
+				},
+				{
+					"name": "categoryRisk",
+					"scope": "public",
+					"path": "RiskCategory",
+					"type": "RiskCategory",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "wcConcern",
+					"scope": "public",
+					"reversePath": true,
+					"path": "riskLinked",
+					"type": "WCRiskCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "workContexts",
+					"scope": "public",
+					"reversePath": false,
+					"path": "wcConcern.workContext",
+					"type": "WorkContext",
+					"kind": "relatedEntities"
+				}
+			]
+		},
+		{
+			"collectionName": "RiskCategoryCollection",
+			"className": "RiskCategory",
+			"extends": "Choice",
+			"attributes": [
+				{
+					"name": "riskCollection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "categoryRisk",
+					"type": "RiskCollection",
+					"kind": "relatedEntities"
+				}
+			]
+		},
+		{
+			"collectionName": "WCRiskCollection",
+			"className": "WCRisk",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "uuid",
+					"primKey": "true",
+					"autosequence": true,
+					"unique": true,
+					"autogenerate": true
+				},
+				{
+					"name": "riskLinked",
+					"kind": "relatedEntity",
+					"type": "Risk",
+					"path": "Risk",
+					"scope": "public",
+					"matchColumn": "risk"
+				},
+				{
+					"name": "workContext",
+					"kind": "relatedEntity",
+					"type": "WorkContext",
+					"path": "WorkContext",
+					"scope": "public"
+				}
+			]
+		}
+	],
+	"type": []
+}
