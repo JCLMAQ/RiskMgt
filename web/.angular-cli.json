@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "angular"
+    "name": "RiskMgt"
   },
   "apps": [
     {
@@ -9,7 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "issepicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
