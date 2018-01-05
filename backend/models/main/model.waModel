@@ -5,6 +5,8 @@
 		"classes": {
 			"WorkContext": {
 				"panelColor": "rgb(255, 255, 255)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -16,6 +18,8 @@
 			},
 			"Choice": {
 				"panelColor": "rgb(255, 230, 255)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": true,
@@ -27,6 +31,8 @@
 			},
 			"WCComponent": {
 				"panelColor": "rgb(255, 255, 255)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -38,6 +44,8 @@
 			},
 			"WCType": {
 				"panelColor": "rgb(255, 255, 255)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -49,6 +57,8 @@
 			},
 			"Risk": {
 				"panelColor": "rgb(255, 255, 0)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -60,6 +70,8 @@
 			},
 			"RiskCategory": {
 				"panelColor": "rgb(255, 255, 0)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -71,6 +83,8 @@
 			},
 			"WCRisk": {
 				"panelColor": "rgb(255, 255, 0)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": false,
@@ -82,44 +96,64 @@
 			},
 			"User": {
 				"panelColor": "rgb(84, 141, 212)",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": true,
 					"position": {
-						"X": 742,
-						"Y": 516
-					},
-					"pathVisible": true
+						"X": 876,
+						"Y": 593
+					}
 				}
 			},
 			"Employee": {
 				"panelColor": "#548DD4",
+				"inheritedVisible": "true",
+				"methodInhVisible": "true",
+				"methVisible": "true",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": false,
 					"position": {
-						"X": 501,
-						"Y": 522
-					},
-					"pathVisible": false
-				},
-				"inheritedVisible": "true",
-				"methodInhVisible": "false"
+						"X": 572,
+						"Y": 446
+					}
+				}
 			},
 			"WCEmployee": {
 				"panelColor": "#8DB3E2",
+				"methVisible": "true",
+				"methodInhVisible": "true",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": false,
 					"position": {
-						"X": 251,
-						"Y": 561
-					},
-					"pathVisible": false
+						"X": 267,
+						"Y": 593
+					}
+				}
+			},
+			"ChangeTracking": {
+				"panelColor": "#B8CCE4",
+				"methVisible": "true",
+				"methodInhVisible": "true",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 74,
+						"Y": 927
+					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
+			"workspaceLeft": 547,
 			"workspaceTop": 200,
+			"methodShowMode": "true",
+			"methodInhShowMode": "true",
 			"relationCurve": {
 				"run": true,
 				"mode": 1
@@ -128,11 +162,103 @@
 				"User": {
 					"method": "User/User-methods.js",
 					"computed": "User/User-events.js"
+				},
+				"ChangeTracking": {
+					"method": "ChangeTracking/ChangeTracking-methods.js"
+				},
+				"Employee": {
+					"method": "Employee/Employee-methods.js",
+					"events": "Employee/Employee-events.js"
 				}
 			}
 		}
 	},
 	"dataClasses": [
+		{
+			"name": "ChangeTracking",
+			"className": "ChangeTracking",
+			"collectionName": "ChangeTrackingCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "className",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "entityKey",
+					"kind": "storage",
+					"scope": "public",
+					"type": "uuid",
+					"indexKind": "auto"
+				},
+				{
+					"name": "changes",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "modifiedDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false,
+					"indexKind": "auto"
+				},
+				{
+					"name": "modifiedBy",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Employee",
+					"path": "Employee"
+				}
+			],
+			"methods": [
+				{
+					"name": "changedCollection",
+					"applyTo": "entityCollection",
+					"scope": "public",
+					"from": "$mainModel.ChangeTracking.collectionMethods.changedCollection",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "changedEntity",
+					"applyTo": "entity",
+					"scope": "public",
+					"from": "$mainModel.ChangeTracking.entityMethods.changedEntity",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "getChanges",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.ChangeTracking.methods.getChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "writeChanges",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.ChangeTracking.methods.writeChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		},
 		{
 			"name": "Choice",
 			"className": "Choice",
@@ -282,23 +408,23 @@
 					"name": "ID",
 					"kind": "storage",
 					"scope": "public",
-					"type": "uuid",
-					"primKey": true,
-					"autosequence": true,
 					"unique": true,
-					"autogenerate": true
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"primKey": true
 				},
 				{
 					"name": "lastName",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "firstName",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "email",
@@ -349,10 +475,117 @@
 					"userDefined": true
 				},
 				{
+					"name": "modifyPassWord",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.User.methods.modifyPassWord",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
 					"name": "validatePassword",
 					"applyTo": "entity",
 					"scope": "publicOnServer",
 					"from": "$mainModel.User.entityMethods.validatePassword",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"className": "Employee",
+			"collectionName": "EmployeeCollection",
+			"scope": "public",
+			"extends": "User",
+			"attributes": [
+				{
+					"name": "manager",
+					"kind": "relatedEntities",
+					"matchColumn": "employeeCollection",
+					"scope": "public",
+					"type": "EmployeeCollection",
+					"reversePath": true,
+					"path": "staff"
+				},
+				{
+					"name": "staff",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Employee",
+					"path": "Employee"
+				},
+				{
+					"name": "gender",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "register",
+					"kind": "storage",
+					"matchColumn": "matricule",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "internalCode",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "startDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "endDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "wcEmployeeConcern",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "WCEmployeeCollection",
+					"reversePath": true,
+					"path": "employeeLinked"
+				},
+				{
+					"name": "workContexts",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "WorkContextCollection",
+					"path": "wcEmployeeConcern.workContext"
+				},
+				{
+					"name": "changesDoneByThisEmployee",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "ChangeTrackingCollection",
+					"reversePath": true,
+					"path": "modifiedBy"
+				}
+			],
+			"methods": [
+				{
+					"name": "getChanges",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.Employee.methods.getChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "getOrgChart",
+					"applyTo": "entity",
+					"scope": "publicOnServer",
+					"from": "$mainModel.Employee.entityMethods.getOrgChart",
 					"allowedOnHTTPGET": false,
 					"userDefined": true
 				}
@@ -401,6 +634,38 @@
 					"scope": "public",
 					"type": "WorkContext",
 					"path": "WorkContext"
+				}
+			]
+		},
+		{
+			"name": "WCEmployee",
+			"className": "WCEmployee",
+			"collectionName": "WCEmployeeCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"primKey": true
+				},
+				{
+					"name": "workContext",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "WorkContext",
+					"path": "WorkContext"
+				},
+				{
+					"name": "employeeLinked",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Employee",
+					"path": "Employee"
 				}
 			]
 		},
@@ -555,121 +820,20 @@
 				},
 				{
 					"name": "relatedEmployee",
+					"kind": "relatedEntities",
 					"scope": "public",
-					"reversePath": true,
-					"path": "workContext",
 					"type": "WCEmployeeCollection",
-					"kind": "relatedEntities"
+					"reversePath": true,
+					"path": "workContext"
 				},
 				{
 					"name": "employees",
-					"scope": "public",
-					"reversePath": false,
-					"path": "relatedEmployee.employeeLinked",
-					"type": "Employee",
-					"kind": "relatedEntities"
-				}
-			]
-		},
-		{
-			"collectionName": "EmployeeCollection",
-			"className": "Employee",
-			"extends": "User",
-			"attributes": [
-				{
-					"name": "manager",
-					"scope": "public",
-					"reversePath": true,
-					"path": "staff",
-					"type": "EmployeeCollection",
 					"kind": "relatedEntities",
-					"matchColumn": "employeeCollection"
-				},
-				{
-					"name": "staff",
 					"scope": "public",
-					"path": "Employee",
-					"type": "Employee",
-					"kind": "relatedEntity"
-				},
-				{
-					"name": "gender",
-					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "register",
-					"scope": "public",
-					"type": "number",
-					"kind": "storage",
-					"matchColumn": "matricule"
-				},
-				{
-					"name": "internalCode",
-					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "startDate",
-					"scope": "public",
-					"type": "date",
-					"kind": "storage"
-				},
-				{
-					"name": "endDate",
-					"scope": "public",
-					"type": "date",
-					"kind": "storage"
-				},
-				{
-					"name": "wcEmployeeConcern",
-					"scope": "public",
-					"reversePath": true,
-					"path": "employeeLinked",
-					"type": "WCEmployeeCollection",
-					"kind": "relatedEntities"
-				},
-				{
-					"name": "workContexts",
-					"scope": "public",
-					"reversePath": false,
-					"path": "wcEmployeeConcern.workContext",
-					"type": "WorkContext",
-					"kind": "relatedEntities"
-				}
-			]
-		},
-		{
-			"collectionName": "WCEmployeeCollection",
-			"className": "WCEmployee",
-			"attributes": [
-				{
-					"name": "ID",
-					"kind": "storage",
-					"type": "uuid",
-					"primKey": "true",
-					"autosequence": true,
-					"unique": true,
-					"autogenerate": true
-				},
-				{
-					"name": "workContext",
-					"kind": "relatedEntity",
-					"type": "WorkContext",
-					"path": "WorkContext",
-					"scope": "public"
-				},
-				{
-					"name": "employeeLinked",
-					"kind": "relatedEntity",
-					"type": "Employee",
-					"path": "Employee",
-					"scope": "public"
+					"type": "EmployeeCollection",
+					"path": "relatedEmployee.employeeLinked"
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }

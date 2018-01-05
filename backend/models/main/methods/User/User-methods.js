@@ -60,3 +60,68 @@ model.User.methods.addUser = function(signUpData) {
 
 //Class methods scope.
 model.User.methods.addUser.scope ="public";
+
+model.User.methods.modifyPassWord = function(changePasswObject) {
+// Modify password class methods
+    var passwordRegexStr, isValid;
+    var sessionRef = currentSession(); // Get session.
+    var promoteToken = sessionRef.promoteWith("Internal"); //temporarily make this session Internal level.
+    //Find the User entity for the current user.
+    var myCurrentUser = currentUser(); // we get the user of the current session.
+    var myUser = ds.User.find("ID = :1", myCurrentUser.ID);
+    if ((myCurrentUser !== null) && (myUser !== null)) { //if a user is logged in.
+        if (myUser.validatePassword(changePasswObject.oldPassword)) { // Old Password is the rigth one
+            if (changePasswObject.newPassword === changePasswObject.newPasswordAgain) {
+                //Check if the password is at least 7 characters and one digit.
+                /*
+					if (changePasswObject.newPassword !== null) {
+						passwordRegexStr = /^(?=.*\d)[a-zA-Z\d]{7,}$/;
+						isValid = passwordRegexStr.test(changePasswObject.newPassword);
+						if (!isValid) {
+							return {error: 8025, errorMessage: "Invalid password. Password must be at least 7 characters."};
+						}
+					}
+					*/
+                myUser.password = changePasswObject.newPassword;
+                try {
+                    myUser.save(); //Save the entity.
+                    sessionRef.unPromote(promoteToken); //Put the session back to normal.
+                    return {
+                        error: 8040,
+//                        errorMessage: "Your password has been changed."
+                        errorMessage: "Votre mot de passe a été changé avec succès."
+                    };
+                }
+                catch (e) {
+                    return {
+                        error: 8099,
+                        errorMessage: e.messages[1]
+                    };
+                }
+            }
+            else {
+                return {
+                    error: 8050,
+//                    errorMessage: "You did not match the new password."
+                    errorMessage: "Les deux mots de passe ne correspondent pas !"
+                };
+            }
+        }
+        else {
+            return {
+                error: 8060,
+//                errorMessage: "You did not enter the correct password."
+                errorMessage: "Vous n'avez pas introduit le bon mot de passe'."
+            };
+        }
+    }
+    else {
+        return {
+            error: 8070,
+//            errorMessage: "Could not load your user account on the server. You password was not changed."
+            errorMessage: "Nous n'avons pas réussi à charger votre compte. Votre mot de passe n'a pas été changé"
+        };
+    }
+//    sessionRef.unPromote(promoteToken); //Put the session back to normal.
+};
+model.User.methods.modifyPassword.scope = "public";
