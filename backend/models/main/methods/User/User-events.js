@@ -1,7 +1,6 @@
 
 model.User.fullName.onGet = function() {
-    var
-        result;
+    var result;
 
     result = this.firstName ? [this.firstName] : [];
     if (this.lastName) {
@@ -12,7 +11,9 @@ model.User.fullName.onGet = function() {
 
 
 model.User.fullName.onSet = function() {
-	// Add your code here;
+	var names = value.split(' '); //split value into an array 
+    this.firstName = names[0];  
+    this.lastName = names[1];
 };
 
 
@@ -23,4 +24,7 @@ model.User.fullName.onSort = function() {
 
 model.User.fullName.onQuery = function(compOperator, valueToCompare) {
     return "firstName " + compOperator + valueToCompare + " || " + "lastName " + compOperator + valueToCompare;
+};
+model.User.fullName.onGet = function() {
+	return "******"; //could also return Null
 };
