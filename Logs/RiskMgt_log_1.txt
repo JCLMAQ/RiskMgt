@@ -104,3 +104,46 @@
 2018-01-03 16:32:25 [wakanda.RiskMgt] INFO - "RiskMgt" solution started
 2018-01-03 16:32:25 [wakanda] INFO - "RiskMgt" solution has been successfully opened for running (duration: 697 ms)
 2018-01-03 16:32:25 [wakanda.supervisor] INFO - solution opened
+2018-01-17 11:20:46 [wakanda.supervisor] INFO - solution closed
+2018-01-17 11:20:46 [wakanda] INFO - Opens the solution "D:\Wakanda\GitHub\RiskMgt\app.waSolution" for running
+2018-01-17 11:20:46 [wakanda.RiskMgt] INFO - Users and groups directory opened
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on ChangeTracking.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on ChangeTracking.entityKey built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on ChangeTracking.modifiedDate built in 9 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on ChangeTracking.modifiedBy built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on Choice.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on User.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on User.staff built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on Risk.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on Risk.mainRisk built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on Risk.categoryRisk built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCComponent.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCComponent.usedBy built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCComponent.partOf built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCEmployee.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCEmployee.workContext built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCEmployee.employeeLinked built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCRisk.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCRisk.riskLinked built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WCRisk.workContext built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WorkContext.ID built in 0 ms
+2018-01-17 11:20:47 [IndexManager] INFO - Index  on WorkContext.workContextType built in 0 ms
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - Datastore opened
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8081,"securedPort":443,"mode":"http"}
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - "backend" project opened
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8080,"securedPort":4433,"mode":"http"}
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - "ServerAdmin" project opened
+2018-01-17 11:20:47 [wakanda.RiskMgt] INFO - "RiskMgt" solution opened
+2018-01-17 11:20:47 [wakanda] INFO - Starts "RiskMgt" solution
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] WARN - Failed to set the required key and certificate for secure connections
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - HTTP Server started
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - "ServerAdmin" project started
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - HTTP Server started
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - "backend" project started
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - Executes the bootstrap file(s)
+2018-01-17 11:20:47 [wakanda.RiskMgt.ServerAdmin] INFO - Bootstrap file(s) executed
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - Executes the bootstrap file(s)
+2018-01-17 11:20:47 [wakanda.RiskMgt.backend] INFO - Bootstrap file(s) executed
+2018-01-17 11:20:47 [wakanda.RiskMgt] INFO - "RiskMgt" solution started
+2018-01-17 11:20:47 [wakanda] INFO - "RiskMgt" solution has been successfully opened for running (duration: 1025 ms)
+2018-01-17 11:20:47 [wakanda.supervisor] INFO - solution opened

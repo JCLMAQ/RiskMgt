@@ -1,4 +1,4 @@
-<p>Hello Home Works</p>
+
 <div class="card-wrapper">
   <mat-card>   
     <mat-card-content>
@@ -20,7 +20,7 @@
     <mat-card-content>
       <mat-card-title>detail of the selected list</mat-card-title>
       <mat-card-subtitle>
-        With a fix panel for dta of the selected item in the list and one expansion panel for each linked tabel .
+        With a fix panel for data of the selected item in the list and one expansion panel for each linked table .
       </mat-card-subtitle>
       
       	<mat-card>
@@ -37,15 +37,40 @@
 			  </mat-expansion-panel-header>
 			  
 				  <mat-form-field>
+				    <input matInput placeholder="Risk name">
+				  </mat-form-field>
+			  
+				  <mat-form-field>
+				    <input matInput placeholder="Risk level">
+				  </mat-form-field>
+			</mat-expansion-panel>
+			
+			<mat-expansion-panel>
+			  <mat-expansion-panel-header>
+			    <mat-panel-title>
+			      Employees related to the Work Context
+			    </mat-panel-title>
+			    <mat-panel-description>
+			      Listing of employees linked and possibility to update the list
+			    </mat-panel-description>
+			  </mat-expansion-panel-header>
+			  
+				  <mat-form-field>
 				    <input matInput placeholder="First name">
 				  </mat-form-field>
 			  
 				  <mat-form-field>
-				    <input matInput placeholder="Age">
+				    <input matInput placeholder="Job <title>`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`</title>">
 				  </mat-form-field>
 			</mat-expansion-panel>
+			
       <mat-card-actions>
 		 Button actions
+		 	<button mat-raised-button>Basic</button>
+		  	<button mat-raised-button color="primary">Primary</button>
+		  	<button mat-raised-button color="accent">Accent</button>
+		  	<button mat-raised-button color="warn">Warn</button>
+		  	<button mat-raised-button disabled>Disabled</button>
       </mat-card-actions>
     </mat-card-content>
   </mat-card>
